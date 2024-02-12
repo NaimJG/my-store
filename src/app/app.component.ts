@@ -6,5 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-store';
+  register = {
+    name: "",
+    email: "",
+    password: ""
+  }
+  persona = new Persona("Naim", 25);
+
+  onRegister() {
+    console.log(this.register)
+  }
+
+  onLoaded(img: string) {
+    console.log('log padre', img)
+  }
+
+}
+class Persona {
+  name: String;
+  age: number;
+  constructor(name: String, age: number) {
+    this.name = name;
+    this.age = age;
+  }
 }

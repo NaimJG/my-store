@@ -1,0 +1,11 @@
+<div class="product" (click)="onShowDetail()">
+  <div class="image">
+    <app-img [img]="product.image"></app-img>
+  </div>
+  <p class="title">{{ product.title }}</p> <!--| reverse-->
+  <h2 class="price">{{ product.price | currency: 'ARS$' }}</h2>
+  <div class="buttons">
+    <!--<button class="details hover" (click)="onShowDetail()">Ver detalle</button>-->
+    <button class="add-cart hover" (click)="onAddToCart()">Añadir al carrito</button>
+  </div>
+</div>
