@@ -5,7 +5,6 @@
   <p class="title">{{ product.title }}</p> <!--| reverse-->
   <h2 class="price">{{ product.price | currency: 'ARS$' }}</h2>
   <div class="buttons">
-    <!--<button class="details hover" (click)="onShowDetail()">Ver detalle</button>-->
-    <button class="add-cart hover" (click)="onAddToCart()">Añadir al carrito</button>
+    <button class="add-cart hover" (click)="onAddToCart($event)">Añadir al carrito</button>
   </div>
 </div>

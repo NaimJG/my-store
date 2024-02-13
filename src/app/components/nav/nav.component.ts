@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { StoreService } from '../../services/store.service'
 @Component({
   selector: 'app-nav',
@@ -6,6 +6,10 @@ import { StoreService } from '../../services/store.service'
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+
+  @Output() public categorySelected = new EventEmitter<any>();
+  public sendCategory: String = "";
+
   activeMenu = false;
   counter = 0;
   constructor(
@@ -20,6 +24,10 @@ export class NavComponent {
 
   toggleMenu(){
     this.activeMenu = !this.activeMenu
+  }
+  changeCategory(category: String){
+    this.sendCategory = category;
+    this.categorySelected.emit(this.sendCategory)
   }
 
 }

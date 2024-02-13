@@ -1,2 +1,6 @@
-<app-nav></app-nav>
-<app-products></app-products>
+<app-nav
+  (categorySelected)="changeCategory($event)"
+></app-nav>
+<app-products
+  [changeCategory]="categorySelected"
+></app-products>

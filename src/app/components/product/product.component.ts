@@ -28,8 +28,11 @@ export class ProductComponent {
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<string>();
 
-  onAddToCart(){
+  onAddToCart(event: Event | undefined){
     this.addedProduct.emit(this.product)
+    if (event){
+      event.stopPropagation()
+    }
   }
 
   onShowDetail() {

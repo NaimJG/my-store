@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Product } from "../../models/product.model";
-import { CreateProductDTO, UpdateProductDTO } from "../../models/product.model";
+import {Input, OnInit, Component, SimpleChanges} from "@angular/core";
+import {Product, CreateProductDTO, UpdateProductDTO} from "../../models/product.model";
 import { StoreService } from '../../services/store.service'
 import { ProductService } from '../../services/product.service'
 
@@ -10,7 +9,7 @@ import { ProductService } from '../../services/product.service'
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-
+  @Input() changeCategory: any;
   total: number = 0;
   myShoppingCart: Product[] = [];
 
@@ -42,9 +41,15 @@ export class ProductsComponent {
   }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe(data => {
-      this.products = data;
-    })
+    this.onChangeCategory(this.changeCategory)
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['changeCategory'] && !changes['changeCategory'].firstChange) {
+      // Si changeCategory cambió y no es la primera vez
+      this.onChangeCategory(this.changeCategory);
+      console.log(this.changeCategory)
+    }
   }
 
   onAddToShoppingCart(product: Product) {
@@ -100,6 +105,19 @@ export class ProductsComponent {
       this.products.splice(productIndex, 1);
       this.showProductDetail = false;
     })
+  }
+
+  onChangeCategory(category: string){
+    if(category == "all"){
+      this.productsService.getAllProducts().subscribe(data => {
+        this.products = data;
+      })
+    }
+    else {
+      this.productsService.getAllProductsByCategory(category).subscribe(data => {
+        this.products = data;
+      })
+    }
   }
 
 }

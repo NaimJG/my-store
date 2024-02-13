@@ -18,9 +18,10 @@
       </button>
     </div>
     <ul>
-      <li><a href="">All</a></li>
-      <li><a href="">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
+      <li><a (click)="changeCategory('all')">All</a></li>
+      <li><a (click)="changeCategory('women\'s clothing')">Women</a></li>
+      <li><a (click)="changeCategory('men\'s clothing')">Men</a></li>
+      <li><a (click)="changeCategory('electronics')">Electronics</a></li>
     </ul>
   </div>
 </div>
@@ -31,9 +32,10 @@
         <img src="./assets/images/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
+        <li><a (click)="changeCategory('all')">All</a></li>
+        <li><a (click)="changeCategory('women\'s clothing')">Women</a></li>
+        <li><a (click)="changeCategory('men\'s clothing')">Men</a></li>
+        <li><a (click)="changeCategory('electronics')">Electronics</a></li>
       </ul>
     </nav>
     <div class="info">
